@@ -51,19 +51,15 @@ jupyter lab guia_tnf.ipynb
 
 ## Dependencias principales
 
-- `openai`
-- `openai-agents`
-- `mcp`
-- `python-dotenv`
-- `pydantic`
-- `pandas`
-- `graphviz`
-- `tiktoken`
-- `jupyterlab`
-- `ipykernel`
+- Entorno de notebook: `jupyterlab`, `ipykernel`, `python-dotenv`
+- Modelos y utilidades OpenAI: `openai`, `openai-agents`, `mcp`, `tiktoken`, `pydantic`
+- Pipeline RAG: `langchain`, `langchain-community`, `langchain-openai`, `langchain-text-splitters`, `pypdf`, `faiss-cpu`, `pandas`
+- Orquestacion del flujo: `langgraph`
+- Visualizacion y demo: `graphviz`, `gradio`
 
 ## Resultado de chunking + embedding
 
+```text
 ================================================================================
 ESTRATEGIA: small
 Numero de chunks: 48
@@ -82,7 +78,7 @@ Cruz sería:
 - Caminar por la Avenida Marítima hasta Plaza de España (ubicación).
 - Por el camino de la Avenida Marítima, ver el auditorio de Tenerife (ubicación).
 - Una vez llegados a Plaza España, callejear un poco (subir la Calle Castillo
-  Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\practicaLLMs\\TENERIFE.pdf', 'total_pages': 25, 'page': 0, 'page_label': '1', 'source_name': 'TENERIFE.pdf', 'start_index': 0, 'chunk_id': 0, 'chunk_size': 500, 'chunk_overlap': 80, 'strategy_name': 'small'}
+  Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\GuiaTNF\\TENERIFE.pdf', 'total_pages': 25, 'page': 0, 'page_label': '1', 'source_name': 'TENERIFE.pdf', 'start_index': 0, 'chunk_id': 0, 'chunk_size': 500, 'chunk_overlap': 80, 'strategy_name': 'small'}
 
 Ejemplo de chunk 2:
 
@@ -95,7 +91,7 @@ Ejemplo de chunk 2:
   Los puntos de interés sugeridos son estos:
   o Parque Marítimo César Manrique [vídeo - ubicación]
   Conjunto de piscinas naturales.
-  Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\practicaLLMs\\TENERIFE.pdf', 'total_pages': 25, 'page': 0, 'page_label': '1', 'source_name': 'TENERIFE.pdf', 'start_index': 396, 'chunk_id': 1, 'chunk_size': 500, 'chunk_overlap': 80, 'strategy_name': 'small'}
+  Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\GuiaTNF\\TENERIFE.pdf', 'total_pages': 25, 'page': 0, 'page_label': '1', 'source_name': 'TENERIFE.pdf', 'start_index': 396, 'chunk_id': 1, 'chunk_size': 500, 'chunk_overlap': 80, 'strategy_name': 'small'}
   ================================================================================
   ESTRATEGIA: medium
   Numero de chunks: 31
@@ -118,12 +114,12 @@ Ejemplo de chunk 2:
   Príncipe - ubicación).
 - Volver de nuevo a por el coche.
 - Ir hacia la pla
-  Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\practicaLLMs\\TENERIFE.pdf', 'total_pages': 25, 'page': 0, 'page_label': '1', 'source_name': 'TENERIFE.pdf', 'start_index': 0, 'chunk_id': 0, 'chunk_size': 900, 'chunk_overlap': 150, 'strategy_name': 'medium'}
+  Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\GuiaTNF\\TENERIFE.pdf', 'total_pages': 25, 'page': 0, 'page_label': '1', 'source_name': 'TENERIFE.pdf', 'start_index': 0, 'chunk_id': 0, 'chunk_size': 900, 'chunk_overlap': 150, 'strategy_name': 'medium'}
 
 Ejemplo de chunk 2:
 o Auditorio de Tenerife [vídeo - ubicación]
 o Plaza de España [vídeo - ubicación]
-Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\practicaLLMs\\TENERIFE.pdf', 'total_pages': 25, 'page': 1, 'page_label': '2', 'source_name': 'TENERIFE.pdf', 'start_index': 0, 'chunk_id': 1, 'chunk_size': 900, 'chunk_overlap': 150, 'strategy_name': 'medium'}
+Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\GuiaTNF\\TENERIFE.pdf', 'total_pages': 25, 'page': 1, 'page_label': '2', 'source_name': 'TENERIFE.pdf', 'start_index': 0, 'chunk_id': 1, 'chunk_size': 900, 'chunk_overlap': 150, 'strategy_name': 'medium'}
 ================================================================================
 ESTRATEGIA: large
 Numero de chunks: 28
@@ -147,15 +143,17 @@ Cruz sería:
   Príncipe - ubicación).
 - Volver de nuevo a por el coche.
 - Ir hacia la pla
-  Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\practicaLLMs\\TENERIFE.pdf', 'total_pages': 25, 'page': 0, 'page_label': '1', 'source_name': 'TENERIFE.pdf', 'start_index': 0, 'chunk_id': 0, 'chunk_size': 1200, 'chunk_overlap': 150, 'strategy_name': 'large'}
+  Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\GuiaTNF\\TENERIFE.pdf', 'total_pages': 25, 'page': 0, 'page_label': '1', 'source_name': 'TENERIFE.pdf', 'start_index': 0, 'chunk_id': 0, 'chunk_size': 1200, 'chunk_overlap': 150, 'strategy_name': 'large'}
 
 Ejemplo de chunk 2:
 o Auditorio de Tenerife [vídeo - ubicación]
 o Plaza de España [vídeo - ubicación]
-Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\practicaLLMs\\TENERIFE.pdf', 'total_pages': 25, 'page': 1, 'page_label': '2', 'source_name': 'TENERIFE.pdf', 'start_index': 0, 'chunk_id': 1, 'chunk_size': 1200, 'chunk_overlap': 150, 'strategy_name': 'large'}
+Metadata: {'producer': 'PyPDF', 'creator': 'Microsoft Word', 'creationdate': '2025-07-13T20:00:01+00:00', 'title': 'Microsoft Word - TENERIFE.docx', 'moddate': '2025-07-13T20:00:01+00:00', 'source': 'c:\\Repositorios\\GuiaTNF\\TENERIFE.pdf', 'total_pages': 25, 'page': 1, 'page_label': '2', 'source_name': 'TENERIFE.pdf', 'start_index': 0, 'chunk_id': 1, 'chunk_size': 1200, 'chunk_overlap': 150, 'strategy_name': 'large'}
+```
 
 ## Resultado retrieval
 
+```text
 Pregunta: Cual es una visita imprescindible en Tenerife para un primer viaje?
 Estrategia: medium
 k: 4
@@ -171,11 +169,13 @@ Fuentes:
 - TENERIFE.pdf | pagina 0 | chunk 0
 - TENERIFE.pdf | pagina 10 | chunk 11
 - TENERIFE.pdf | pagina 15 | chunk 18
+```
 
 ## TESTS
 
 ### Test "small"
 
+```text
 ================================================================================
 EVALUACION retrieval | estrategia=small | k=3
 
@@ -198,9 +198,11 @@ Top 1 OK: 2 / 2
 Respuestas con fuentes: 2 / 2
 Latencia media retrieval (ms): 596.0
 Latencia media generacion (ms): 4536.81
+```
 
 ### Test "medium"
 
+```text
 ================================================================================
 EVALUACION retrieval | estrategia=medium | k=3
 
@@ -223,9 +225,11 @@ Top 1 OK: 2 / 2
 Respuestas con fuentes: 2 / 2
 Latencia media retrieval (ms): 275.82
 Latencia media generacion (ms): 3530.11
+```
 
 ### Test "large"
 
+```text
 ================================================================================
 EVALUACION retrieval | estrategia=large | k=3
 
@@ -249,16 +253,19 @@ Top 1 OK: 2 / 2
 Respuestas con fuentes: 2 / 2
 Latencia media retrieval (ms): 255.82
 Latencia media generacion (ms): 3863.37
+```
 
 ## Test Conclusion
 
+```text
 ================================================================================
 Mejor metrica: EVAL_STRATEGY = "large" | EVAL_K = 3
 ================================================================================
+```
 
 ## Ejemplo conversacion multimodelo
 
-================================================================================
+```text
 Usuario: Que me recomiendas ver en el Teide?
 Pregunta autonoma: Que me recomiendas ver en el Teide?
 Chunks recuperados: 3
@@ -271,7 +278,7 @@ Fuentes:
 
 - TENERIFE.pdf | pagina 14 | chunk 15
 - TENERIFE.pdf | pagina 8 | chunk 7
-- TENERIFE.pdf | pagina 15 | chunk 16
+- # TENERIFE.pdf | pagina 15 | chunk 16
   Usuario: Y cuanto tiempo deberia reservar para esa visita?
   Pregunta autonoma: ¿Cuánto tiempo debería reservar para visitar el Parque Nacional del Teide y sus principales miradores, incluyendo la subida en teleférico y la posible observación nocturna?
   Chunks recuperados: 3
@@ -286,7 +293,7 @@ Fuentes:
 
 - TENERIFE.pdf | pagina 14 | chunk 15
 - TENERIFE.pdf | pagina 21 | chunk 22
-- TENERIFE.pdf | pagina 15 | chunk 16
+- # TENERIFE.pdf | pagina 15 | chunk 16
   Usuario: Y por que dicen que Gran Canaria es mas bonita?
   Pregunta autonoma: ¿Por qué se dice que Gran Canaria es más bonita que Tenerife?
   Chunks recuperados: 3
@@ -300,22 +307,22 @@ Fuentes:
 - TENERIFE.pdf | pagina 14 | chunk 15
   HISTORIAL: demo
 
----
+================================================================================
 
 Turno 1 | user
 Que me recomiendas ver en el Teide?
 
----
+================================================================================
 
 Turno 2 | assistant
 Te recomiendo subir al Parque Nacional del Teide por la carretera TF24 desde La Laguna, donde puedes hacer una parada en el Mirador de La Tarta para disfrutar de un espectacular mar de nubes si el clima lo permite. Al llegar al Parador de las Cañadas del Teide, puedes aparcar y visitar el mirador de La Ruleta, que ofrece una de las vistas más emblemáticas de la isla.
 
-Si quieres subir hasta el pico del Teide, puedes usar los teleféricos del Teide. Además, para más información, puedes visitar el Centro de Visitantes de El Portillo, que es gratuito. Una experiencia muy especial es subir de noche cuando el cielo esté despejado, ya que desde el Teide se puede observar uno de los cielos estrellados más impresionantes del mundo.
+# Si quieres subir hasta el pico del Teide, puedes usar los teleféricos del Teide. Además, para más información, puedes visitar el Centro de Visitantes de El Portillo, que es gratuito. Una experiencia muy especial es subir de noche cuando el cielo esté despejado, ya que desde el Teide se puede observar uno de los cielos estrellados más impresionantes del mundo.
 
 Turno 3 | user
 Y cuanto tiempo deberia reservar para esa visita?
 
----
+================================================================================
 
 Turno 4 | assistant
 Para visitar el Parque Nacional del Teide y disfrutar de sus principales miradores, incluyendo la subida en teleférico, te recomendaría reservar al menos medio día, es decir, unas 4 a 5 horas. Esto te permitirá subir por la carretera TF24, hacer una parada en el Mirador de La Tarta, llegar al Parador de las Cañadas del Teide para visitar el mirador de La Ruleta, y subir en teleférico hasta el pico del Teide si lo deseas.
@@ -324,10 +331,42 @@ Si además quieres hacer la experiencia de la observación nocturna del cielo es
 
 En resumen, para la visita diurna con teleférico y miradores, medio día es suficiente, y para la experiencia nocturna, una noche adicional.
 
+================================================================================
+
 Turno 5 | user
 Y por que dicen que Gran Canaria es mas bonita?
 
----
+================================================================================
 
 Turno 6 | assistant
 El contexto recuperado no contiene información específica sobre por qué algunas personas dicen que Gran Canaria es más bonita que Tenerife. Por lo tanto, no puedo darte una respuesta basada en la guía de Tenerife. Si quieres, puedo ayudarte con recomendaciones y detalles sobre Tenerife.
+```
+
+## Prueba Tool
+
+```text
+Chacho, si vas al Teide, tienes que subir por la carretera TF24 partiendo desde La Laguna. Te aconsejo que pares en el Mirador de La Tarta, porque si el norte está nublado te vas a encontrar con un espectacular mar de nubes que es una pasada. Luego, llegando al Parador de las Cañadas del Teide, deja allí el coche y camina hasta el mirador de La Ruleta, donde tendrás una de las vistas más famosas y bonitas de la isla.
+
+Si andas con ganas de aventura, puedes subir hasta el pico del Teide en el teleférico. Eso sí, es importante planificarlo con tiempo porque suele haber mucha gente. Además, no te pierdas el Centro de Visitantes de El Portillo, que es gratis y te cuenta todo sobre el parque y su naturaleza.
+
+Y aquí te suelto una joya: subir al Teide de noche es una experiencia que no se olvida, porque vas a ver un cielo estrellado que no tiene comparación, uno de los más limpios y espectaculares del mundo entero. Así que si puedes, date esa gozada.
+
+No cojas lucha con el calor o el frío porque en el Teide puede haber de todo, desde un pelete por la noche hasta una calufa a pleno día.
+
+¡Disfruta un montón, mi niño!
+
+Fuentes:
+
+- TENERIFE.pdf | pagina 14 | chunk 15
+- TENERIFE.pdf | pagina 8 | chunk 7
+- TENERIFE.pdf | pagina 15 | chunk 16
+  Herramientas usadas: ['get_canarian_expression_guide']
+  get_canarian_expression_guide {} True
+```
+
+## Prueba chat Gradio
+
+Captura de la interfaz Gradio ejecutada desde el notebook con una pregunta sobre
+donde comer escaldon en Tenerife.
+
+![Prueba chat Gradio](prueba_chat_gradio.png)
