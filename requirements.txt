@@ -395,3 +395,9 @@ websocket-client==1.9.0
     # via jupyter-server
 websockets==16.0
     # via openai-agents
+faiss-cpu
+langchain
+langchain-community
+langchain-openai
+langchain-text-splitters
+pypdf

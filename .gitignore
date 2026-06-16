@@ -9,3 +9,6 @@ __pycache__/
 *.temp
 Thumbs.db
 .DS_Store
+vector_store/
+*.faiss
+*.pkl
