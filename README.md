@@ -224,7 +224,7 @@ Respuestas con fuentes: 2 / 2
 Latencia media retrieval (ms): 275.82
 Latencia media generacion (ms): 3530.11
 
-## Test "large"
+### Test "large"
 
 ================================================================================
 EVALUACION retrieval | estrategia=large | k=3
@@ -249,3 +249,85 @@ Top 1 OK: 2 / 2
 Respuestas con fuentes: 2 / 2
 Latencia media retrieval (ms): 255.82
 Latencia media generacion (ms): 3863.37
+
+## Test Conclusion
+
+================================================================================
+Mejor metrica: EVAL_STRATEGY = "large" | EVAL_K = 3
+================================================================================
+
+## Ejemplo conversacion multimodelo
+
+================================================================================
+Usuario: Que me recomiendas ver en el Teide?
+Pregunta autonoma: Que me recomiendas ver en el Teide?
+Chunks recuperados: 3
+Latencia retrieval (ms): 298.84
+Asistente: Te recomiendo subir al Parque Nacional del Teide por la carretera TF24 desde La Laguna, donde puedes hacer una parada en el Mirador de La Tarta para disfrutar de un espectacular mar de nubes si el clima lo permite. Al llegar al Parador de las Cañadas del Teide, puedes aparcar y visitar el mirador de La Ruleta, que ofrece una de las vistas más emblemáticas de la isla.
+
+Si quieres subir hasta el pico del Teide, puedes usar los teleféricos del Teide. Además, para más información, puedes visitar el Centro de Visitantes de El Portillo, que es gratuito. Una experiencia muy especial es subir de noche cuando el cielo esté despejado, ya que desde el Teide se puede observar uno de los cielos estrellados más impresionantes del mundo.
+
+Fuentes:
+
+- TENERIFE.pdf | pagina 14 | chunk 15
+- TENERIFE.pdf | pagina 8 | chunk 7
+- TENERIFE.pdf | pagina 15 | chunk 16
+  Usuario: Y cuanto tiempo deberia reservar para esa visita?
+  Pregunta autonoma: ¿Cuánto tiempo debería reservar para visitar el Parque Nacional del Teide y sus principales miradores, incluyendo la subida en teleférico y la posible observación nocturna?
+  Chunks recuperados: 3
+  Latencia retrieval (ms): 232.6
+  Asistente: Para visitar el Parque Nacional del Teide y disfrutar de sus principales miradores, incluyendo la subida en teleférico, te recomendaría reservar al menos medio día, es decir, unas 4 a 5 horas. Esto te permitirá subir por la carretera TF24, hacer una parada en el Mirador de La Tarta, llegar al Parador de las Cañadas del Teide para visitar el mirador de La Ruleta, y subir en teleférico hasta el pico del Teide si lo deseas.
+
+Si además quieres hacer la experiencia de la observación nocturna del cielo estrellado desde el Teide, deberías reservar una noche completa para ello, ya que la subida y la estancia para contemplar el cielo requieren tiempo y que el cielo esté despejado.
+
+En resumen, para la visita diurna con teleférico y miradores, medio día es suficiente, y para la experiencia nocturna, una noche adicional.
+
+Fuentes:
+
+- TENERIFE.pdf | pagina 14 | chunk 15
+- TENERIFE.pdf | pagina 21 | chunk 22
+- TENERIFE.pdf | pagina 15 | chunk 16
+  Usuario: Y por que dicen que Gran Canaria es mas bonita?
+  Pregunta autonoma: ¿Por qué se dice que Gran Canaria es más bonita que Tenerife?
+  Chunks recuperados: 3
+  Latencia retrieval (ms): 288.6
+  Asistente: El contexto recuperado no contiene información específica sobre por qué algunas personas dicen que Gran Canaria es más bonita que Tenerife. Por lo tanto, no puedo darte una respuesta basada en la guía de Tenerife. Si quieres, puedo ayudarte con recomendaciones y detalles sobre Tenerife.
+
+Fuentes:
+
+- TENERIFE.pdf | pagina 22 | chunk 23
+- TENERIFE.pdf | pagina 15 | chunk 16
+- TENERIFE.pdf | pagina 14 | chunk 15
+  HISTORIAL: demo
+
+---
+
+Turno 1 | user
+Que me recomiendas ver en el Teide?
+
+---
+
+Turno 2 | assistant
+Te recomiendo subir al Parque Nacional del Teide por la carretera TF24 desde La Laguna, donde puedes hacer una parada en el Mirador de La Tarta para disfrutar de un espectacular mar de nubes si el clima lo permite. Al llegar al Parador de las Cañadas del Teide, puedes aparcar y visitar el mirador de La Ruleta, que ofrece una de las vistas más emblemáticas de la isla.
+
+Si quieres subir hasta el pico del Teide, puedes usar los teleféricos del Teide. Además, para más información, puedes visitar el Centro de Visitantes de El Portillo, que es gratuito. Una experiencia muy especial es subir de noche cuando el cielo esté despejado, ya que desde el Teide se puede observar uno de los cielos estrellados más impresionantes del mundo.
+
+Turno 3 | user
+Y cuanto tiempo deberia reservar para esa visita?
+
+---
+
+Turno 4 | assistant
+Para visitar el Parque Nacional del Teide y disfrutar de sus principales miradores, incluyendo la subida en teleférico, te recomendaría reservar al menos medio día, es decir, unas 4 a 5 horas. Esto te permitirá subir por la carretera TF24, hacer una parada en el Mirador de La Tarta, llegar al Parador de las Cañadas del Teide para visitar el mirador de La Ruleta, y subir en teleférico hasta el pico del Teide si lo deseas.
+
+Si además quieres hacer la experiencia de la observación nocturna del cielo estrellado desde el Teide, deberías reservar una noche completa para ello, ya que la subida y la estancia para contemplar el cielo requieren tiempo y que el cielo esté despejado.
+
+En resumen, para la visita diurna con teleférico y miradores, medio día es suficiente, y para la experiencia nocturna, una noche adicional.
+
+Turno 5 | user
+Y por que dicen que Gran Canaria es mas bonita?
+
+---
+
+Turno 6 | assistant
+El contexto recuperado no contiene información específica sobre por qué algunas personas dicen que Gran Canaria es más bonita que Tenerife. Por lo tanto, no puedo darte una respuesta basada en la guía de Tenerife. Si quieres, puedo ayudarte con recomendaciones y detalles sobre Tenerife.
